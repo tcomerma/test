@@ -3,21 +3,31 @@ pipeline {
   stages {
     stage('step 1') {
       steps {
-        sh 'test.sh'
+        echo 'step 1'
       }
     }
     stage('step 2') {
       parallel {
         stage('step 2') {
           steps {
-            echo 'hola'
+            echo 'step 2'
           }
         }
         stage('step 3') {
           steps {
-            cfnUpdate 'xxx'
+            echo 'step 3'
           }
         }
+      }
+    }
+    stage('step 4') {
+      steps {
+        input(message: 'Esperant OK', id: 'Estat', ok: 'OK')
+      }
+    }
+    stage('step 5') {
+      steps {
+        echo 'Step 5'
       }
     }
   }
