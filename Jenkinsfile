@@ -1,10 +1,8 @@
 pipeline {
   agent any
-  options([
     parameters {
           choice(choices: ['UE-WEST-1', 'EU-WEST-2'], description: 'What AWS region?', name: 'region')
     }
-  ])
 
   stages {
     stage('step 1') {
