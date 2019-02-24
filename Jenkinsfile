@@ -8,7 +8,9 @@ pipeline {
     stage('step 1') {
       steps {
         echo 'step 1'
-        sh '${WORKSPACE}/packer-aws-centos7-master/build.sh ${REGION}'
+        withAWS(credentials:'tcomerma') {
+          sh '${WORKSPACE}/packer-aws-centos7-master/build.sh ${REGION}'
+        }
       }
     }
     stage('step 2') {
