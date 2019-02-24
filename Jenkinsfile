@@ -4,6 +4,7 @@ pipeline {
     stage('step 1') {
       steps {
         echo 'step 1'
+        sh '${WORKSPACE}/packer-aws-centos7-master/build.sh '
       }
     }
     stage('step 2') {
