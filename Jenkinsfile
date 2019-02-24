@@ -1,14 +1,14 @@
 pipeline {
   agent any
     parameters {
-          choice(choices: ['UE-WEST-1', 'EU-WEST-2'], description: 'What AWS region?', name: 'region')
+          choice(choices: ['UE-WEST-1', 'EU-WEST-2'], description: 'What AWS region?', name: 'REGION')
     }
 
   stages {
     stage('step 1') {
       steps {
         echo 'step 1'
-        sh '${WORKSPACE}/packer-aws-centos7-master/build.sh '
+        sh '${WORKSPACE}/packer-aws-centos7-master/build.sh ${REGION}'
       }
     }
     stage('step 2') {
